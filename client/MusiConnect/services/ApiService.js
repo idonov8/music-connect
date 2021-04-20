@@ -1,5 +1,5 @@
-import Axios from 'axios';
-import { SERVER_URL, API_TIMEOUT } from '../Consts';
+import axios from 'axios';
+import { SERVER_URL } from '../Consts';
 
 const METHODS = {
   POST: 'POST',
@@ -15,11 +15,13 @@ const apiCall = (method, url, data=undefined, config={}) => Axios({
   ...config
 })
 
-const getLinks = (songUrl) => apiCall(
-    METHODS.GET,
+const getLinks =  songUrl => axios.get(
     SERVER_URL,
-    {url: songUrl}
-)
+    {params: {url: songUrl}}
+  ).then(result => {
+    const links = result.data.linksByPlatform
+    return Object.keys(links).map(service => [ service, links[service].url ])
+  }).catch(error => console.log(error))
 
 export const apiService = {
     getLinks
