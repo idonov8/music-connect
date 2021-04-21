@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TextInput, Linking } from 'react-native';
 
 export default function HomeScreen() {
   const [input, setInput] = useState('input link here')
-  const [links, setLinks] = useState([['empty', 'https://link.com'], ['empty2', 'google.com']])
+  const [links, setLinks] = useState([])
   const getLinks = async (url) => {
     setLinks(await apiService.getLinks(url))
   }
@@ -14,7 +14,7 @@ export default function HomeScreen() {
       <Text style={styles.h1}>Music Connect!</Text>
       <TextInput
         style={styles.input}
-        onChange={event => {
+        onChange={ event => {
           event.persist()
           setInput(event.target.value)
         }}
