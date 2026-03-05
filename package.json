@@ -1,5 +1,13 @@
 {
-  "dependencies": {
-    "dotenv": "^8.2.0"
+  "name": "music-connect",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A bridge between all music streaming services",
+  "scripts": {
+    "install:client": "cd client/MusiConnect && npm install",
+    "start": "cd client/MusiConnect && npx expo start",
+    "start:web": "cd client/MusiConnect && npx expo start --web",
+    "build:android": "cd client/MusiConnect && npx expo run:android",
+    "build:ios": "cd client/MusiConnect && npx expo run:ios"
   }
 }
